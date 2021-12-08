@@ -1,15 +1,3 @@
-# Basic Sample Hardhat Project
+inverted-stable-coin-concept:
 
-This project demonstrates a basic Hardhat use case. It comes with a sample contract, a test for that contract, a sample script that deploys that contract, and an example of a task implementation, which simply lists the available accounts.
-
-Try running some of the following tasks:
-
-```shell
-npx hardhat accounts
-npx hardhat compile
-npx hardhat clean
-npx hardhat test
-npx hardhat node
-node scripts/sample-script.js
-npx hardhat help
-```
+this is a "pegged" ERC20 stable coin. Each coin is pegged to be equal to one US dollar worth of Eth. The users balance and total supply of the token is what changes is respect to the Eth price. The price is pegged (for now) using chainlinks price feed. users can purchase tokens for Eth from the contract. The amount of tokens bought equals the value in US dallors at the time of purchase that is sent with the transaction. Users balances are tracked by the amount of Eth they have stored in the contract. Every time balanceOf(user) is called, the value of eth stored by user is calculated and returned to the caller. On transfers, the number of tokens transferred is used to calculate the amount of Eth that equates to that dollar amount. Then, that amount eth is added to the receivers internal Eth balance and subtracted from the sender.
